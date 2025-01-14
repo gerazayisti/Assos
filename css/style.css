@@ -1,0 +1,123 @@
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --info-color: #0dcaf0;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Navbar Styling */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Icons */
+.fa-2x {
+    font-size: 2em;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 20px;
+    padding: 0.375rem 1.5rem;
+}
+
+.btn-sm {
+    padding: 0.25rem 1rem;
+}
+
+/* Custom Shadows */
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+/* Stats Section */
+.list-unstyled li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.list-unstyled li:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 0.5rem 1rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Table Styling */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Footer Styling */
+footer {
+    border-top: 1px solid #dee2e6;
+}

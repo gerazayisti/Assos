@@ -1,0 +1,706 @@
+{
+    "database": "famille_megue_db",
+    "tables": {
+        "parametres_generaux": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "nom_association": {
+                    "type": "VARCHAR(100)",
+                    "nullable": false
+                },
+                "logo_path": {
+                    "type": "VARCHAR(255)",
+                    "nullable": true
+                },
+                "langue": {
+                    "type": "ENUM('fr', 'en')",
+                    "nullable": false,
+                    "default": "'fr'"
+                },
+                "fuseau_horaire": {
+                    "type": "VARCHAR(50)",
+                    "nullable": false,
+                    "default": "UTC+1"
+                },
+                "description": {
+                    "type": "TEXT",
+                    "nullable": true
+                },
+                "adresse": {
+                    "type": "VARCHAR(255)",
+                    "nullable": true
+                },
+                "email_contact": {
+                    "type": "VARCHAR(100)",
+                    "nullable": true
+                },
+                "telephone_contact": {
+                    "type": "VARCHAR(20)",
+                    "nullable": true
+                },
+                "date_creation": {
+                    "type": "DATE",
+                    "nullable": true
+                }
+            }
+        },
+        "parametres_notifications": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "notifications_email": {
+                    "type": "BOOLEAN",
+                    "nullable": false,
+                    "default": true
+                },
+                "notifications_sms": {
+                    "type": "BOOLEAN",
+                    "nullable": false,
+                    "default": false
+                },
+                "notif_reunions": {
+                    "type": "BOOLEAN",
+                    "nullable": false,
+                    "default": true
+                },
+                "notif_cotisations": {
+                    "type": "BOOLEAN",
+                    "nullable": false,
+                    "default": true
+                },
+                "notif_prets": {
+                    "type": "BOOLEAN",
+                    "nullable": false,
+                    "default": true
+                },
+                "delai_rappel": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "default": 24,
+                    "comment": "Délai de rappel en heures"
+                }
+            }
+        },
+        "parametres_financiers": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "devise": {
+                    "type": "ENUM('XAF', 'EUR', 'USD')",
+                    "nullable": false,
+                    "default": "'XAF'"
+                },
+                "taux_interet_defaut": {
+                    "type": "DECIMAL(5,2)",
+                    "nullable": false,
+                    "default": 5.00
+                },
+                "duree_max_pret": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "default": 12,
+                    "comment": "Durée maximale en mois"
+                },
+                "montant_min_epargne": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false,
+                    "default": 1000.00
+                },
+                "montant_max_pret": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false,
+                    "default": 1000000.00
+                },
+                "penalite_retard": {
+                    "type": "DECIMAL(5,2)",
+                    "nullable": false,
+                    "default": 2.00,
+                    "comment": "Pourcentage de pénalité pour retard"
+                }
+            }
+        },
+        "parametres_securite": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "auth_deux_facteurs": {
+                    "type": "BOOLEAN",
+                    "nullable": false,
+                    "default": false
+                },
+                "duree_session": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "default": 30,
+                    "comment": "Durée de session en minutes"
+                },
+                "tentatives_max": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "default": 3,
+                    "comment": "Nombre maximal de tentatives de connexion"
+                },
+                "complexite_mdp": {
+                    "type": "ENUM('faible', 'moyenne', 'forte')",
+                    "nullable": false,
+                    "default": "'moyenne'"
+                }
+            }
+        },
+        "parametres_systeme": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "version": {
+                    "type": "VARCHAR(20)",
+                    "nullable": false
+                },
+                "derniere_maj": {
+                    "type": "DATETIME",
+                    "nullable": false
+                },
+                "mode_debug": {
+                    "type": "BOOLEAN",
+                    "nullable": false,
+                    "default": false
+                },
+                "maintenance_auto": {
+                    "type": "BOOLEAN",
+                    "nullable": false,
+                    "default": true
+                },
+                "frequence_sauvegarde": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "default": 24,
+                    "comment": "Fréquence de sauvegarde en heures"
+                },
+                "retention_logs": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "default": 30,
+                    "comment": "Durée de conservation des logs en jours"
+                }
+            }
+        },
+        "membres": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "nom": {
+                    "type": "VARCHAR(100)",
+                    "nullable": false
+                },
+                "prenom": {
+                    "type": "VARCHAR(100)",
+                    "nullable": false
+                },
+                "date_naissance": {
+                    "type": "DATE",
+                    "nullable": true
+                },
+                "lieu_naissance": {
+                    "type": "VARCHAR(100)",
+                    "nullable": true
+                },
+                "sexe": {
+                    "type": "ENUM('M', 'F')",
+                    "nullable": false
+                },
+                "telephone": {
+                    "type": "VARCHAR(20)",
+                    "nullable": true
+                },
+                "email": {
+                    "type": "VARCHAR(100)",
+                    "nullable": true
+                },
+                "adresse": {
+                    "type": "TEXT",
+                    "nullable": true
+                },
+                "profession": {
+                    "type": "VARCHAR(100)",
+                    "nullable": true
+                },
+                "date_adhesion": {
+                    "type": "DATE",
+                    "nullable": false,
+                    "default": "CURRENT_DATE"
+                },
+                "statut": {
+                    "type": "ENUM('actif', 'inactif', 'suspendu')",
+                    "nullable": false,
+                    "default": "'actif'"
+                },
+                "photo": {
+                    "type": "VARCHAR(255)",
+                    "nullable": true
+                },
+                "role": {
+                    "type": "ENUM('membre', 'admin', 'tresorier', 'secretaire', 'president')",
+                    "nullable": false,
+                    "default": "'membre'"
+                },
+                "numero_membre": {
+                    "type": "VARCHAR(20)",
+                    "nullable": false,
+                    "unique": true
+                },
+                "derniere_connexion": {
+                    "type": "DATETIME",
+                    "nullable": true
+                },
+                "mot_de_passe": {
+                    "type": "VARCHAR(255)",
+                    "nullable": false
+                },
+                "token_2fa": {
+                    "type": "VARCHAR(100)",
+                    "nullable": true
+                }
+            }
+        },
+        "epargnes": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "membre_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "membres",
+                        "field": "id",
+                        "onDelete": "RESTRICT"
+                    }
+                },
+                "montant": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false
+                },
+                "date_operation": {
+                    "type": "DATETIME",
+                    "nullable": false,
+                    "default": "CURRENT_TIMESTAMP"
+                },
+                "type_operation": {
+                    "type": "ENUM('depot', 'retrait')",
+                    "nullable": false
+                },
+                "description": {
+                    "type": "TEXT",
+                    "nullable": true
+                }
+            }
+        },
+        "tontines": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "nom": {
+                    "type": "VARCHAR(100)",
+                    "nullable": false
+                },
+                "montant_cotisation": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false
+                },
+                "frequence": {
+                    "type": "ENUM('hebdomadaire', 'mensuelle', 'trimestrielle')",
+                    "nullable": false
+                },
+                "date_debut": {
+                    "type": "DATE",
+                    "nullable": false
+                },
+                "date_fin": {
+                    "type": "DATE",
+                    "nullable": true
+                },
+                "statut": {
+                    "type": "ENUM('en_cours', 'terminee', 'suspendue')",
+                    "nullable": false,
+                    "default": "'en_cours'"
+                }
+            }
+        },
+        "participations_tontine": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "tontine_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "tontines",
+                        "field": "id",
+                        "onDelete": "CASCADE"
+                    }
+                },
+                "membre_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "membres",
+                        "field": "id",
+                        "onDelete": "RESTRICT"
+                    }
+                },
+                "ordre_reception": {
+                    "type": "INTEGER",
+                    "nullable": true
+                },
+                "date_reception": {
+                    "type": "DATE",
+                    "nullable": true
+                }
+            }
+        },
+        "cotisations_tontine": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "participation_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "participations_tontine",
+                        "field": "id",
+                        "onDelete": "CASCADE"
+                    }
+                },
+                "montant": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false
+                },
+                "date_cotisation": {
+                    "type": "DATE",
+                    "nullable": false
+                },
+                "statut": {
+                    "type": "ENUM('payee', 'en_retard', 'annulee')",
+                    "nullable": false,
+                    "default": "'payee'"
+                }
+            }
+        },
+        "prets": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "membre_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "membres",
+                        "field": "id",
+                        "onDelete": "RESTRICT"
+                    }
+                },
+                "montant": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false
+                },
+                "taux_interet": {
+                    "type": "DECIMAL(5,2)",
+                    "nullable": false
+                },
+                "date_demande": {
+                    "type": "DATE",
+                    "nullable": false,
+                    "default": "CURRENT_DATE"
+                },
+                "date_approbation": {
+                    "type": "DATE",
+                    "nullable": true
+                },
+                "date_debut": {
+                    "type": "DATE",
+                    "nullable": true
+                },
+                "duree_mois": {
+                    "type": "INTEGER",
+                    "nullable": false
+                },
+                "statut": {
+                    "type": "ENUM('en_attente', 'approuve', 'refuse', 'en_cours', 'termine', 'en_retard')",
+                    "nullable": false,
+                    "default": "'en_attente'"
+                },
+                "motif": {
+                    "type": "TEXT",
+                    "nullable": true
+                }
+            }
+        },
+        "remboursements": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "pret_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "prets",
+                        "field": "id",
+                        "onDelete": "CASCADE"
+                    }
+                },
+                "montant": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false
+                },
+                "date_echeance": {
+                    "type": "DATE",
+                    "nullable": false
+                },
+                "date_paiement": {
+                    "type": "DATE",
+                    "nullable": true
+                },
+                "statut": {
+                    "type": "ENUM('en_attente', 'paye', 'en_retard')",
+                    "nullable": false,
+                    "default": "'en_attente'"
+                }
+            }
+        },
+        "activites": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "titre": {
+                    "type": "VARCHAR(200)",
+                    "nullable": false
+                },
+                "description": {
+                    "type": "TEXT",
+                    "nullable": true
+                },
+                "date_debut": {
+                    "type": "DATETIME",
+                    "nullable": false
+                },
+                "date_fin": {
+                    "type": "DATETIME",
+                    "nullable": true
+                },
+                "lieu": {
+                    "type": "VARCHAR(200)",
+                    "nullable": true
+                },
+                "type": {
+                    "type": "ENUM('reunion', 'evenement', 'celebration')",
+                    "nullable": false
+                },
+                "statut": {
+                    "type": "ENUM('a_venir', 'en_cours', 'terminee', 'annulee')",
+                    "nullable": false,
+                    "default": "'a_venir'"
+                }
+            }
+        },
+        "participations_activite": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "activite_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "activites",
+                        "field": "id",
+                        "onDelete": "CASCADE"
+                    }
+                },
+                "membre_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "membres",
+                        "field": "id",
+                        "onDelete": "CASCADE"
+                    }
+                },
+                "statut_presence": {
+                    "type": "ENUM('present', 'absent', 'excuse')",
+                    "nullable": false,
+                    "default": "'absent'"
+                }
+            }
+        },
+        "notifications": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "membre_id": {
+                    "type": "INTEGER",
+                    "foreignKey": {
+                        "table": "membres",
+                        "field": "id",
+                        "onDelete": "CASCADE"
+                    }
+                },
+                "titre": {
+                    "type": "VARCHAR(200)",
+                    "nullable": false
+                },
+                "message": {
+                    "type": "TEXT",
+                    "nullable": false
+                },
+                "type": {
+                    "type": "ENUM('info', 'avertissement', 'urgent')",
+                    "nullable": false,
+                    "default": "'info'"
+                },
+                "date_creation": {
+                    "type": "DATETIME",
+                    "nullable": false,
+                    "default": "CURRENT_TIMESTAMP"
+                },
+                "date_lecture": {
+                    "type": "DATETIME",
+                    "nullable": true
+                },
+                "statut": {
+                    "type": "ENUM('non_lu', 'lu')",
+                    "nullable": false,
+                    "default": "'non_lu'"
+                }
+            }
+        },
+        "statistiques_membres": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "membre_id": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "foreignKey": {
+                        "table": "membres",
+                        "field": "id"
+                    }
+                },
+                "total_epargne": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false,
+                    "default": 0.00
+                },
+                "total_prets": {
+                    "type": "DECIMAL(15,2)",
+                    "nullable": false,
+                    "default": 0.00
+                },
+                "nombre_prets": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "default": 0
+                },
+                "nombre_retards_paiement": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "default": 0
+                },
+                "participation_reunions": {
+                    "type": "DECIMAL(5,2)",
+                    "nullable": false,
+                    "default": 0.00,
+                    "comment": "Pourcentage de participation aux réunions"
+                },
+                "derniere_cotisation": {
+                    "type": "DATE",
+                    "nullable": true
+                },
+                "statut_cotisation": {
+                    "type": "ENUM('à_jour', 'en_retard', 'suspendu')",
+                    "nullable": false,
+                    "default": "'à_jour'"
+                }
+            }
+        },
+        "historique_roles": {
+            "fields": {
+                "id": {
+                    "type": "INTEGER",
+                    "primaryKey": true,
+                    "autoIncrement": true
+                },
+                "membre_id": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "foreignKey": {
+                        "table": "membres",
+                        "field": "id"
+                    }
+                },
+                "ancien_role": {
+                    "type": "ENUM('membre', 'admin', 'tresorier', 'secretaire', 'president')",
+                    "nullable": false
+                },
+                "nouveau_role": {
+                    "type": "ENUM('membre', 'admin', 'tresorier', 'secretaire', 'president')",
+                    "nullable": false
+                },
+                "date_changement": {
+                    "type": "DATETIME",
+                    "nullable": false,
+                    "default": "CURRENT_TIMESTAMP"
+                },
+                "modifie_par": {
+                    "type": "INTEGER",
+                    "nullable": false,
+                    "foreignKey": {
+                        "table": "membres",
+                        "field": "id"
+                    }
+                },
+                "raison": {
+                    "type": "TEXT",
+                    "nullable": true
+                }
+            }
+        }
+    }
+}
