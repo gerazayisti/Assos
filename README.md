@@ -2,9 +2,11 @@
 plateforme de gestion d'association et tontine au cameroun
 
 #Description
+
 Assos est une plateforme de gestion destinée aux associations et tontines au Cameroun. Elle permet aux membres de gérer efficacement les activités de leur association, y compris les tontines, épargnes, et autres.
 
 #Fonctionnalités Principales
+
 Gestion des membres
 Suivi des tontines
 Gestion des épargnes
