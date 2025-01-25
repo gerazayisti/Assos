@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MembreController;
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/membres', function () {
-    return view('membres.membres');
-})->name('membres');
+Route::resource('membres', MembreController::class);
 
 Route::get('/activites', function () {
     return view('activites.activites');

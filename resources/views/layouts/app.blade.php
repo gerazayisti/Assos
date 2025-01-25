@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('membres*') ? 'active' : '' }}" href="{{ route('membres') }}">
+                    <a class="nav-link {{ request()->is('membres*') ? 'active' : '' }}" href="{{ route('membres.index') }}">
                         <i class="fas fa-users"></i>
                         <span>Membres</span>
                     </a>
