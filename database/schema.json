@@ -201,7 +201,7 @@
         },
         "membres": {
             "fields": {
-                "id": {
+                "id_membre": {
                     "type": "INTEGER",
                     "primaryKey": true,
                     "autoIncrement": true

@@ -1,0 +1,100 @@
+.sidebar-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    z-index: 1000;
+    padding: 0.5rem 0;
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.app-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+}
+
+.app-name {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    overflow-x: auto;
+}
+
+.nav-item {
+    margin: 0 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: #666;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.nav-link.active {
+    background-color: #e9ecef;
+    color: #007bff;
+}
+
+.nav-link i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.more-menu {
+    display: none;
+}
+
+.dropup-menu {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 -2px 4px rgba(0,0,0,.1);
+    border-radius: 0.25rem;
+    padding: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        padding-right: 60px; /* Space for more menu */
+    }
+    
+    .more-menu {
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .dropup-menu.show {
+        display: block;
+    }
+}
