@@ -34,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('epargnes*') ? 'active' : '' }}" href="{{ route('epargnes') }}">
+                    <a class="nav-link {{ request()->is('epargnes*') ? 'active' : '' }}" href="{{ route('epargnes.index') }}">
                         <i class="fas fa-piggy-bank"></i>
                         <span>Épargnes</span>
                     </a>

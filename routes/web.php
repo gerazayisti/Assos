@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MembreController;
+use App\Http\Controllers\EpargnesController;
 
 Route::get('/', function () {
     return view('home');
@@ -9,13 +10,17 @@ Route::get('/', function () {
 
 Route::resource('membres', MembreController::class);
 
+// Epargnes Routes
+Route::resource('epargnes', EpargnesController::class);
+Route::get('epargnes/{epargne}/details', [EpargnesController::class, 'details'])->name('epargnes.details');
+
 Route::get('/activites', function () {
     return view('activites.activites');
 })->name('activites');
 
-Route::get('/epargnes', function () {
-    return view('epargnes.epargnes');
-})->name('epargnes');
+// Route::get('/epargnes', function () {
+//     return view('epargnes.epargnes');
+// })->name('epargnes');
 
 Route::get('/cotisations', function () {
     return view('cotisations.cotisations');
