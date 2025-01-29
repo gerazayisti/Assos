@@ -24,13 +24,30 @@ Assos est une plateforme de gestion destinée aux associations et tontines au Ca
    ```sh
    cd Assos
    ```
-3. Ouvrez le fichier `index.html` dans votre navigateur pour démarrer l'application.
+3. Installez les dépendances PHP avec Composer :
+   ```sh
+   composer install
+   ```
+4. Copiez le fichier `.env.example` en `.env` et configurez vos variables d'environnement :
+   ```sh
+   cp .env.example .env
+   ```
+5. Générez la clé de l'application :
+   ```sh
+   php artisan key:generate
+   ```
+6. Configurez votre base de données dans le fichier `.env` et exécutez les migrations :
+   ```sh
+   php artisan migrate
+   ```
 
 ## Utilisation
 
-- Accédez à l'application via `index.html`.
-- Naviguez à travers les différentes sections : Accueil, Membres, Épargnes, Tontines, Prêts, Rapports, Paramètres.
-- Utilisez les actions rapides pour ajouter des membres, créer de nouvelles tontines, enregistrer des épargnes, et générer des rapports.
+1. Démarrez le serveur de développement Laravel :
+   ```sh
+   php artisan serve
+   ```
+2. Accédez à l'application via `http://localhost:8000` dans votre navigateur.
 
 ## Contribuer
 
@@ -47,6 +64,7 @@ Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plu
 
 ## Auteur
 
-Gervais Azanga Ayissi
+Frontend : Gervais Azanga Ayissi
+Backend : Marc DAHA
 
 Pour plus de détails, consultez les commits récents [ici](https://github.com/gerazayisti/Assos/commits/main).
