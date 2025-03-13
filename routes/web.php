@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MembreController;
 use App\Http\Controllers\EpargnesController;
+use App\Http\Controllers\TontineController;
 
 Route::get('/', function () {
     return view('home');
@@ -38,6 +39,9 @@ Route::get('/rapports', function () {
     return view('rapports.rapports');
 })->name('rapports');
 
-Route::get('/tontines', function () {
-    return view('tontines.tontines');
-})->name('tontines');
+// Tontines Routes
+Route::get('/tontines', [TontineController::class, 'index'])->name('tontines.index');
+Route::resource('tontines', TontineController::class)->except(['index']);
+Route::post('/tontines/{tontine}/add-participant', [TontineController::class, 'addParticipant'])->name('tontines.add-participant');
+Route::delete('/tontines/{tontine}/remove-participant/{user}', [TontineController::class, 'removeParticipant'])->name('tontines.remove-participant');
+Route::post('/tontines/{tontine}/add-contribution', [TontineController::class, 'addContribution'])->name('tontines.add-contribution');

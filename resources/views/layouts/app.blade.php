@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('tontines*') ? 'active' : '' }}" href="{{ route('tontines') }}">
+                    <a class="nav-link {{ request()->is('tontines*') ? 'active' : '' }}" href="{{ route('tontines.index') }}">
                         <i class="fas fa-handshake"></i>
                         <span>Tontines</span>
                     </a>
